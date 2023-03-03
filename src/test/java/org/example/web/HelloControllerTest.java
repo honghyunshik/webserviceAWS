@@ -7,7 +7,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-
 import static org.hamcrest.core.Is.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -37,13 +36,11 @@ public class HelloControllerTest {
         int amount = 1000;
 
         mvc.perform(get("/hello/dto")
-                        .param("name",name)
+                        .param("name",name)     //요청 파라미터를 설정, 값은 String만 가능
                         .param("amount",String.valueOf(amount)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.amount",is(amount)))
+                .andExpect(jsonPath("$.amount",is(amount)))     //JSON 응답값을 필드별로 검증, $를 기준으로 필드명 명시
                 .andExpect(jsonPath("$.name",is(name)));
-
-
 
     }
 
