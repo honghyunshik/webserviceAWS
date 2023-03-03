@@ -34,7 +34,9 @@ repositories {
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
-    implementation('org.projectlombok:lombok')
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
 }
 
 test {
